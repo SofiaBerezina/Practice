@@ -15,18 +15,18 @@ jobs:
 
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y wget
+        apt-get update
+        apt-get install -y wget curl
 
-    - name: Prepare public folder
+    - name: Build static site
       run: |
         mkdir public
-        echo "<html><body><h1>My Page</h1></body></html>" > public/index.html
+        echo "<html><body><h1>Bad Practices Deployed!</h1></body></html>" > public/index.html
 
-    - name: Deploy
+    - name: Deploy using git
       run: |
         git config user.name "bot"
         git config user.email "bot@example.com"
         git add .
         git commit -m "Deploy"
-        git push
+        git push origin main
