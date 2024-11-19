@@ -21,12 +21,12 @@ jobs:
     - name: Build static site
       run: |
         mkdir -p public
-        echo "<html><body><h1>Bad Practices Deployed!</h1></body></html>" > public/index.html
+        echo "<html><body><h1>Bad Practices Deployed!</h1></body></html>" > public/index2.html
 
     - name: Deploy using git
       run: |
         git config user.name "bot"
         git config user.email "bot@example.com"
         git add .
-        git commit -m "Deploy"
+        git commit -m "Deploy Bad Practices"
         git push origin main
