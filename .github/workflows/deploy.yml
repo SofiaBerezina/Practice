@@ -15,8 +15,8 @@ jobs:
 
     - name: Install dependencies
       run: |
-        apt-get update
-        apt-get install -y wget
+        sudo apt-get update
+        sudo apt-get install -y wget
 
     - name: Prepare public folder
       run: |
