@@ -20,7 +20,7 @@ jobs:
 
     - name: Build static site
       run: |
-        mkdir public
+        mkdir -p public
         echo "<html><body><h1>Bad Practices Deployed!</h1></body></html>" > public/index.html
 
     - name: Deploy using git
