@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,20 +15,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y wget curl
-
     - name: Build static site
       run: |
-        mkdir public
-        echo "<html><body><h1>Bad Practices Deployed!</h1></body></html>" > public/index.html
+        mkdir -p public
+        echo "<html><body><h1>Good Practices Deployed!</h1></body></html>" > public/index.html
 
-    - name: Deploy using git
-      run: |
-        git config user.name "bot"
-        git config user.email "bot@example.com"
-        git add .
-        git commit -m "Deploy"
-        git push origin main
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
