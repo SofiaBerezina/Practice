@@ -28,6 +28,9 @@ jobs:
     runs-on: ubuntu-22.04
     needs: build
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
     - name: Download build artifacts
       uses: actions/download-artifact@v3
       with:
@@ -37,4 +40,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./public
+        publish_dir: public
